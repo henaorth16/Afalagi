@@ -1,10 +1,13 @@
 "use client";
 
 import { useEffect } from "react";
+import {toast} from "sonner";
 import { motion, stagger, useAnimate } from "motion/react";
 
 import Floating, { FloatingElement } from "@/components/ui/parallax-floating";
 import { Button } from "@/components/ui/button";
+import { signOut } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 const exampleImages = [
   {
@@ -59,7 +62,7 @@ const exampleImages = [
 
 const Hero = () => {
   const [scope, animate] = useAnimate();
-
+  const router = useRouter();
   useEffect(() => {
     animate(
       "img",
@@ -70,9 +73,12 @@ const Hero = () => {
 
   return (
     <div
-      className="flex w-full h-full min-h-[600px] justify-center items-center bg-black overflow-hidden"
+      className="flex w-full h-full min-h-[600px] justify-center items-center overflow-hidden"
       ref={scope}
     >
+      <div className="absolute inset-0 bg-gradient-to-b from-accent-foreground via-transparent to-background pointer-events-none">
+
+      </div>
       <div className="flex flex-col items-center justify-center text-center py-24 px-6">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
@@ -99,10 +105,26 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <Button size="lg" className="rounded-2xl px-8 cursor-pointer">
-            Get Started
-          </Button>
         </motion.div>
+  <Button
+    size="lg"
+    onClick={async () => {
+      await signOut({
+        fetchOptions: {
+          onSuccess: () => {
+            router.push("/login");
+          },
+          onError: (ctx) => {
+            console.error("SignOut error context:", ctx);
+            toast.error(`Sign out failed: ${ctx.error?.message}`);
+          },
+        },
+      });
+    }}
+    className="rounded-2xl px-8 z-20 cursor-pointer"
+  >
+    Get Started
+  </Button>
       </div>
 
       <Floating sensitivity={-1} className="overflow-hidden">
