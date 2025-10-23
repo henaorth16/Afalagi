@@ -1,5 +1,3 @@
-// app/page.tsx or src/app/page.tsx
-
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -18,6 +16,18 @@ import {
   HeartHandshake,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  // etc
+};
 
 const features = [
   {
@@ -94,7 +104,8 @@ export default function Features() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 mx-auto lg:grid-cols-3 gap-6">
+        <div className="">
+          <Slider {...settings} className="mx-auto gap-4">
           {features.map((feature, i) => (
             <motion.div
               key={i}
@@ -102,7 +113,7 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
             >
-              <Card className=" border h-full border-accent bg-transparent hover:scale-105 transition hover:shadow-2xl rounded-2xl">
+              <Card className=" border h-min mx-2 justify-baseline border-accent bg-transparent hover:scale-105 transition hover:shadow-2xl rounded-2xl">
                 <CardHeader className="flex flex-row items-center gap-3">
                   <feature.icon className="h-6 w-6 text-primary" />
                   <CardTitle className="text-lg">{feature.title}</CardTitle>
@@ -115,6 +126,7 @@ export default function Features() {
               </Card>
             </motion.div>
           ))}
+          </Slider>
         </div>
       </section>
      
