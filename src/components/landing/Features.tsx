@@ -19,12 +19,17 @@ import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { reddit } from "better-auth/social-providers";
 
+
+
+const isMobile = window && window.innerWidth < 510
+  
 const settings = {
   dots: true,
   infinite: true,
   speed: 500,
-  slidesToShow: 3,
+  slidesToShow: isMobile ? 1 : 3,
   slidesToScroll: 1,
   // etc
 };
@@ -88,7 +93,7 @@ const features = [
 export default function Features() {
 
   return (
-    <div className="min-h-screen container relative py-8 text-gray-900">      
+    <div className="min-h-screen container relative py-8 px-4 text-gray-900">      
 
       {/* Features Section */}
       <section className="py-16 px-6 max-w-6xl mx-auto">
