@@ -86,7 +86,7 @@ const Hero = () => {
           transition={{ duration: 0.6 }}
           className="text-5xl font-bold mb-4 tracking-tight"
         >
-          <span className="text-primary">Afalagi</span> — Find the Missing,
+          <span className="text-primary">Afalagi.</span> — Find the Missing,
           Reunite the Lost
         </motion.h1>
 
@@ -96,7 +96,7 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-lg max-w-2xl text-muted-foreground mb-8"
         >
-          A platform bridging families, communities, and authorities to bring
+          A platform bridging families and communities, to bring
           people home safely.
         </motion.p>
 

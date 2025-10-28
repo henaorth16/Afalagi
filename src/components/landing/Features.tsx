@@ -113,7 +113,7 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
             >
-              <Card className=" border h-min mx-2 justify-baseline border-accent bg-transparent hover:scale-105 transition hover:shadow-2xl rounded-2xl">
+              <Card className=" border min-h-[200px] mx-2 border-accent bg-transparent hover:opacity-60 transition hover:shadow-2xl rounded-2xl">
                 <CardHeader className="flex flex-row items-center gap-3">
                   <feature.icon className="h-6 w-6 text-primary" />
                   <CardTitle className="text-lg">{feature.title}</CardTitle>
