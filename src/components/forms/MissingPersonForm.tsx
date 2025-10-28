@@ -74,7 +74,7 @@ export default function MissingPersonForm({
       );
 
       if (!res.ok) throw new Error("Failed to submit data");
-
+      
       toast.success(
         isEditMode ? "updated successfully!" : "submitted successfully!"
       );
@@ -86,7 +86,7 @@ export default function MissingPersonForm({
   }
 
   return (
-    <div className="w-xl mx-auto p-6 rounded-2xl shadow-md border">
+    <div className="max-w-xl my-8 mx-auto p-6 rounded-2xl shadow-md border">
       <h2 className="text-2xl font-semibold mb-6">
         {isEditMode
           ? "Edit Missing Person Record"
