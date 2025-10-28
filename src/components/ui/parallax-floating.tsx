@@ -34,7 +34,7 @@ const Floating = ({
   easingFactor = 0.05,
   ...props
 }: FloatingProps) => {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const containerRef:any = useRef<HTMLDivElement>(null)
   const elementsMap = useRef(
     new Map<
       string,
@@ -126,7 +126,7 @@ export const FloatingElement = ({
   return (
     <div
       ref={elementRef}
-      className={cn("absolute will-change-transform", className)}
+      className={cn("absolute hidden md:block will-change-transform", className)}
     >
       {children}
     </div>
